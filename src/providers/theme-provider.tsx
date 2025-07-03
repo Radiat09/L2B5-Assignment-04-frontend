@@ -1,9 +1,10 @@
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useEffect, type ReactNode } from "react";
 
+// Only 'dark' is allowed currently
 type Theme = "dark";
 
 type ThemeProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 type ThemeProviderState = {
@@ -11,10 +12,10 @@ type ThemeProviderState = {
   setTheme: (theme: Theme) => void;
 };
 
-const ThemeProviderContext = createContext<ThemeProviderState>({
-  theme: "dark",
-  setTheme: () => {}, // no-op since theme is fixed
-});
+// Initial context value with correct type
+const ThemeProviderContext = createContext<ThemeProviderState | undefined>(
+  undefined
+);
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
   useEffect(() => {
@@ -23,9 +24,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     root.classList.add("dark");
   }, []);
 
-  const value = {
+  const value: ThemeProviderState = {
     theme: "dark",
-    setTheme: () => {}, // theme change is disabled
+    setTheme: () => {}, // No-op (theme switching is disabled)
   };
 
   return (
@@ -34,12 +35,3 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     </ThemeProviderContext.Provider>
   );
 }
-
-export const useTheme = () => {
-  const context = useContext(ThemeProviderContext);
-
-  if (context === undefined)
-    throw new Error("useTheme must be used within a ThemeProvider");
-
-  return context;
-};
