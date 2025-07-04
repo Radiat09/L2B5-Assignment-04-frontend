@@ -42,3 +42,12 @@ BUBT Central Library is a web application designed to manage books and borrowing
    ```bash
    git clone https://github.com/yourusername/bubt-central-library.git
    cd bubt-central-library
+   ```
+2. Install dependencies:
+   ```bash
+   npm i / npm install
+   ```
+3. Run the project:
+   ```bash
+   npm run dev
+   ```
