@@ -1,69 +1,44 @@
-# React + TypeScript + Vite
+# BUBT Central Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+BUBT Central Library is a web application designed to manage books and borrowing activities efficiently. Built with React, Tailwind CSS, Shadcn UI, TypeScript, and Redux Toolkit, this application provides a seamless user experience for both administrators and patrons.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+### Public Routes
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **All Books**: View a comprehensive list of all available books.
+- **Add Book**: Create new books with essential details.
+- **Borrow Summary**: Review borrowed books and their quantities.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Book Management
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **Book List Table**: 
+  - Title, Author, Genre, ISBN, Copies, Availability
+  - Edit Book: Update existing book information.
+  - Delete Book: Remove unwanted books.
+  - Borrow Book: Initiate borrowing process.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Borrow Book
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Borrow Form**:
+  - Quantity selection
+  - Due date picker
+- **Business Logic**:
+  - Quantity cannot exceed available copies
+  - Book status updates automatically
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Technologies Used
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Frontend**: React, TypeScript, Redux Toolkit
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn UI
+- **State Management**: Redux Toolkit
+
+## Development Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/bubt-central-library.git
+   cd bubt-central-library
